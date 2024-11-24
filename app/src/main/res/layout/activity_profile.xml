@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <!-- ScrollView to enable scrolling -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/logo_col"
+                android:padding="16dp">
+
+                <!-- Profile Picture -->
+                <ImageView
+                    android:id="@+id/profilePicture"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/default_profile_pic"
+                    android:contentDescription="Profile Picture"
+                     />
+
+                <!-- User Name -->
+                <TextView
+                    android:id="@+id/userNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <!-- Upload Profile Image Button -->
+            <Button
+                android:id="@+id/uploadProfileImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Profile Image"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/logo_color"
+                android:textColor="@android:color/black" />
+
+            <!-- Upcoming Bookings Section -->
+            <TextView
+                android:id="@+id/upcomingBookingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming Bookings"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp" />
+
+            <ListView
+                android:id="@+id/upcomingBookingsListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:background="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom fixed layout for Manage Bookings -->
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/manageBookingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage Bookings"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/logo_color"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:backgroundTint="@color/logo_color"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,83 @@
+[versions]
+agp = "8.5.2"
+androidMapsUtils = "2.2.0"
+compiler = "4.15.1"
+core = "3.3.0"
+coreKtxVersion = "1.6.0"
+firebaseAuth = "23.0.0"
+firebaseDatabase = "21.0.0"
+firebaseDatabaseVersion = "20.0.0"
+firebaseFirestore = "25.1.0"
+firebaseStorage = "21.0.1"
+glide = "4.15.1"
+googleFirebaseDatabase = "latest_version"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.2"
+constraintlayout = "2.1.4"
+materialVersion = "1.4.0"
+mpandroidchart = "v3.1.0"
+navigationUiKtx = "2.8.2"
+firebaseFunctionsKtx = "21.0.0"
+picasso = "2.71828"
+playServicesAuth = "21.2.0"
+playServicesAuthVersion = "20.6.0"
+playServicesBasement = "21.0.0"
+playServicesMaps = "19.0.0"
+playServicesMapsVersion = "latest_version"
+volley = "1.2.1"
+volleyVersion = "latest_version"
+playServicesLocation = "21.3.0"
+recyclerview = "1.3.2"
+zxingAndroidEmbedded = "4.3.0"
+
+[libraries]
+android-maps-utils = { module = "com.google.maps.android:android-maps-utils", version.ref = "androidMapsUtils" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-ktx-v160 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationUiKtx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+core = { module = "com.google.zxing:core", version.ref = "core" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
+firebase-database-v2000 = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabaseVersion" }
+firebase-database-vlatestversion = { module = "com.google.firebase:firebase-database", version.ref = "googleFirebaseDatabase" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorage" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+google-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v140 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-functions-ktx", version.ref = "firebaseFunctionsKtx" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+play-services-auth-v2060 = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
+play-services-basement = { module = "com.google.android.gms:play-services-basement", version.ref = "playServicesBasement" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-maps-vlatestversion = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMapsVersion" }
+volley = { module = "com.android.volley:volley", version.ref = "volley" }
+volley-vlatestversion = { module = "com.android.volley:volley", version.ref = "volleyVersion" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
