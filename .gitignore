@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+client/node_modules
 
 # Logs
 logs
@@ -43,3 +44,6 @@ build/
 
 # Windows system files
 Thumbs.db
+
+# Exclude service account keys
+shuttleapp-75184-8f0d1d64a8e3.json

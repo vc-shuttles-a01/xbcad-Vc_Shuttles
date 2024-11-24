@@ -1,0 +1,146 @@
+.manage-drivers {
+  font-family: Arial, sans-serif;
+  padding: 20px;  /* Increased padding for more space */
+  max-width: 550px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: #52391d 4px solid;
+  background-color: #f8f9fa;
+  align-self: center;
+  border-radius: 15;
+}
+
+.manage-drivers h2 {
+  color: #52391d;
+  font-weight: bolder;  /* Corrected the font weight property */
+  margin-bottom: 16px;  /* Added space below the heading */
+}
+
+
+.manage-drivers-3 {
+  font-family: inherit;
+  padding: 16px;  /* Increased padding for more space */
+  width: 450px;
+  margin: 16px auto;  /* Added margin for spacing between sections */
+  display: flex;
+  flex-direction: column;
+  border: #52391d 2px solid;
+  background-color: #f8f9fa;
+  gap: 16px;  /* Increased gap between elements */
+}
+
+.manage-drivers-3 button {
+  width: 40%;  /* Increased width for buttons for better proportion */
+  background-color: #52391d;
+  color: #FFF0CC;
+  margin-top: 12px;  /* Added space above the button */
+  border: #000 1px solid;
+  padding: 10px;  /* Added padding for better click area */
+  align-self: center;  /* Centered the button */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.manage-drivers-3 button:hover {
+  background-color: #000;
+  color: #FFF0CC;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;  /* Increased bottom margin for spacing */
+}
+.manage-drivers-2 {
+  font-family: inherit;
+  padding: 14px;  /* Slightly increased padding */
+  width: 450px;
+  margin: 16px auto;  /* Added margin to separate from other elements */
+  display: flex;
+  flex-direction: row;
+  background-color: #f8f9fa;
+  border: #000 1px solid;
+  justify-content: space-between;  /* Adjust space between elements */
+  align-items: center;  /* Vertically center the items in the container */
+}
+
+.email-input {
+  width: 65%;  /* Adjust width for better proportion within the flex container */
+  padding: 12px;  /* Increased padding for better input area */
+  margin-right: 10px;  /* Added margin-right to create space between input and button */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;  /* Ensures input takes full width within its container */
+  box-sizing: border-box;  /* Includes padding in the width calculation */
+}
+
+.assign-button {
+  width: 30%;  /* Adjusted width for better proportion within the flex container */
+  height: 40px;  /* Adjusted height for button */
+  padding: 0 10px;  /* Added horizontal padding for better button size */
+  align-items: center;  /* Centered the text inside */
+  text-align: center;
+  background-color: #52391d;
+  color: #FFF0CC;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.assign-button:hover {
+  background-color: #FFF0CC;
+  color: #000;
+}
+
+.help-text {
+  text-align: center;
+  color: #52391d;
+  margin-bottom: 20px;  /* Adjusted margin for better spacing */
+}
+
+.drivers-list {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.driver-item {
+  padding: 12px 16px;  /* Adjusted padding for more balanced spacing */
+  margin: 10px 0;  /* Increased vertical margin for better separation */
+  background-color: #f8f9fa;
+  border: 1px solid #52391d;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;  /* Added flex to align button properly */
+  justify-content: space-between; /* Ensure the email and button are spaced out */
+  align-items: center; /* Vertically center the text and button */
+}
+
+.driver-item ul li {
+  padding: 16px;
+  margin: 0;
+  color: #52391d;
+}
+
+.driver-item button {
+  background-color: #52391d;
+  color: #FFF0CC;
+  padding: 8px 16px; /* Added padding for better button size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.driver-item button:hover {
+  background-color: #000;
+  color: #FFF0CC;
+}
+
+.driver-item:hover {
+  background-color: #baa588;
+}
+

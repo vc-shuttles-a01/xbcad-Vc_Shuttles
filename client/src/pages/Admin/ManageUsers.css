@@ -1,0 +1,127 @@
+.manage-users {
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.manage-users h1 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #333;
+}
+
+.manage-users-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  border: 2px solid #52391d;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fffaf0;
+  margin: 16px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-email{
+  width: calc(100% - 32px);
+  padding: 10px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-password {
+  width: calc(100% - 32px);
+  padding: 10px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-user-button {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #52391d;
+  color: #fffaf0;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-user-button:hover {
+  background-color: #fffaf0;
+  color: #52391d;
+}
+
+.user-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px; /* Adjusted padding for mixed spacing */
+  margin-bottom: 10px; /* Increased margin for mixed item spacing */
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: default;
+  width: 90%;
+  transition: background-color 0.2s;
+}
+
+.user-item:hover {
+  background-color: #e9ecef;
+}
+
+.delete-button {
+  background-color: #52391d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px; /* Smaller padding for a smaller button */
+  font-size: 12px; /* Reduced font size for a more compact button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto; /* Adjust button width to fit text size */
+  margin-left: 10px; /* Space between the user email and the button */
+}
+
+.delete-button:hover {
+  background-color: #fffaf0;
+  color: #52391d;
+}
+
+.decline-button{
+  background-color: white;
+  color:  #52391d;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px; /* Smaller padding for a smaller button */
+  font-size: 12px; /* Reduced font size for a more compact button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto; /* Adjust button width to fit text size */
+  margin-left: 10px; /* Space between the user email and the button */
+  border: #52391d 1px solid;
+
+}
+
+.decline-button:hover {
+  background-color: #FFF0CC;
+  color: red;
+
+}
+

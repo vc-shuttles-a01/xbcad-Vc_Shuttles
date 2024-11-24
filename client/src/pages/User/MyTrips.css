@@ -1,0 +1,179 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  display: flex;
+  align-items: center; 
+  gap :10px/* Centers the button and text vertically */
+}
+
+.back-button {
+  background-color: #8B4513; /* Brown color */
+  color: white; /* White text */
+  border: none; /* Removes default border */
+  padding: 5px 10px; /* Makes the button smaller */
+  font-size: 14px; /* Smaller font */
+  margin-right: 10px; /* Adds space between the button and text */
+  cursor: pointer; /* Shows pointer on hover */
+  border-radius: 4px; /* Optional: Adds rounded corners */
+  width: 25%;
+}
+.back-button button{
+  background-color: #8B4513; /* Brown color */
+  color: white; /* White text */
+  border: none; /* Removes default border */
+  padding: 5px 10px; /* Makes the button smaller */
+  font-size: 14px; /* Smaller font */
+  margin-right: 10px; /* Adds space between the button and text */
+  cursor: pointer; /* Shows pointer on hover */
+  border-radius: 4px; /* Optional: Adds rounded corners */
+}
+
+.back-button button:hover {
+  background-color: #6b3f1f; /* Darker brown on hover */
+}
+
+
+/* Trips Table */
+.trips-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.trips-table th,
+.trips-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.trips-table th {
+  background-color: #e4ce93;
+  color: #333;
+}
+
+.trips-table td {
+  background-color: #f5f5f5;
+}
+
+.no-trips-message {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Trips Panel */
+#trips-panel {
+  display: none;
+  padding: 20px;
+}
+
+/* Trip Blocks */
+.trip-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.trip-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 10px 0;
+}
+
+.trip-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.trip-details p {
+  margin: 8px 0;
+  color: #555;
+}
+
+#no-trips-message {
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+}
+
+/* Card Styles */
+.card-perfil {
+  width: 620px;
+  height: 150px;
+  background: #fff;
+  position: relative;
+  margin: 10px auto;
+  border-left: 10px solid #2980b9;
+  transition: 0.5s;
+}
+
+.card-perfil:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
+}
+
+/* Card Text Box */
+.card-perfil .card-text-box {
+  width: 400px;
+  margin: 30px;
+}
+
+.card-perfil .card-text-box h1 {
+  color: #2980b9;
+}
+
+.card-perfil .card-text-box p {
+  color: #aaa;
+  text-align: left;
+}
+
+/* Upcoming Trip */
+.card-perfil-s {
+  border-left: 10px solid #2ecc71;
+}
+
+.card-perfil-s:hover {
+  border-left: 10px solid #27ae60;
+}
+
+/* Warning Trip */
+.card-perfil-w {
+  border-left: 10px solid #f1c40f;
+}
+
+.card-perfil-w:hover {
+  border-left: 10px solid #d4ac0d;
+}
+
+/* Danger/Completed Trip */
+.card-perfil-d {
+  border-left: 10px solid #e74c3c;
+}
+
+.card-perfil-d:hover {
+  border-left: 10px solid #c0392b;
+}

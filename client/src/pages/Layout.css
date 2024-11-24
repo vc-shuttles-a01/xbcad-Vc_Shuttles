@@ -1,0 +1,169 @@
+/* General Layout */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #fde8ba; /* Light yellow color */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width:90%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  gap: 15px;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: flex-end; /* Align buttons to the right */
+  gap: 8px; /* Space between buttons */
+  width: 200px;
+}
+.header-content h1 {
+  color: #52391d; /* Dark brown for contrast */
+  margin: 0; /* Remove default margins */
+  flex-grow: 1; /* Ensures the title stays centered */
+}
+
+.header-content .logo {
+  height: 100px;
+  width: 150px; /* Adjust as needed for your logo */
+  background-image: url('../Assets/shuttle_logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 5px;
+  margin-left: auto; /* Align logo to the right */
+}
+
+.header-content .button {
+  width: 90px;
+  padding: 10px;
+  font-size: 16px;
+  color: #000;
+  background-color: #fde8ba;
+  
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header-content .button:hover {
+  background-color: #000000;
+  color: #fde8ba;
+}
+
+.open-sidebar-btn {
+  background-color: #52391d;
+  width: 90px;
+  height: 40px;
+  padding: 10px;
+  color: #fde8ba;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: #000000 2px;
+}
+
+.open-sidebar-btn:hover {
+  background-color: #000;
+  color: #fde8ba;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hidden */
+  width: 250px;
+  height: 100%;
+  background-color: #52391d;
+  box-shadow: 20px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 10;
+  padding: 20px;
+  border: #FFF0CC 4px solid;
+}
+
+.sidebar.open {
+  left: 0; /* Slide in */
+}
+
+.close-sidebar-btn {
+  background-color: #52391d;
+  color: #FFF0CC;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.close-sidebar-btn:hover {
+  background-color: #000000;
+  color: #FFF0CC;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  padding: 10px 20px;
+  margin: 5px 0;
+  background-color: #52391d;
+  text-decoration: none;
+  color: #FFF0CC;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar nav ul li:hover {
+  background-color: #FFF0CC;
+  color: #52391d;
+  transform: scale(1.05);
+}
+
+.sidebar nav ul li:active {
+  background-color: #000;
+  transform: scale(1);
+}
+
+/* Links styling */
+.sidebar nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #FFF0CC;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #000;
+  border-top: 1px solid #ddd;
+}

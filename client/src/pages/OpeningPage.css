@@ -1,0 +1,117 @@
+.opening-page {
+    font-family: Arial, sans-serif;
+    color: #52391d;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .opening-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #FFF0CC;
+  }
+  
+  .opening-header h1 {
+    margin: 0;
+  }
+  
+  .header-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .header-buttons .btn {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #52391d;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .header-buttons .btn:hover {
+    background-color: #FFF0CC;
+    color: #52391d;
+  }
+  
+  .carousel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px; /* Adjust slide height */
+    margin: 20px 0; /* Add spacing around slides */
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 1s ease-in-out;
+    padding: 20px; /* Adjust slide content spacing */
+    box-sizing: border-box;
+  }
+  
+  .slide.active {
+    left: 0;
+  }
+  
+  .slide img {
+    max-width: 80%; /* Ensure images are properly sized */
+    max-height: 70%;
+    object-fit: contain;
+    margin-top: 20px; /* Adjust spacing */
+    border-radius: 20pt;
+  }
+
+/* Style the text inside the slide */
+.slide h2, .slide p {
+  color: #fff; /* Make sure text is readable */
+  margin: 0;
+}
+
+  
+  .text-panel {
+    padding: 20px;
+    background-color: #FFF0CC;
+    color: #52391d;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .text-block {
+    background-color: #FFF0CC;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 200px;
+    box-shadow: #52391d 30px;
+    border: #52391d solid 1pt;
+  }
+  
+  .footer {
+    background-color: #FFF0CC;
+    color: #52391d;
+    padding: 10px;
+
+
+  }
+
+  
+
+  

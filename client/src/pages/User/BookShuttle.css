@@ -1,0 +1,75 @@
+/* Center Align and Widen Form */
+.form-1 {
+    background-color: white;
+    color: #6c4f2e;
+    border: #6c4f2e 2px solid;
+    width: 100%; /* Expand form to full parent width */
+    max-width: 800px; /* Set maximum width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 30px; /* Increase padding for better spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+/* Match Inner Elements to Form Width */
+.form-group1,
+.form-field {
+    width: 100%; /* Match the width of the parent container */
+    max-width: 800px; /* Align with the max-width of .form-1 */
+    background-color: white;
+    align-items: center;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Form Fields */
+.form-field label,
+input[type="text"],
+input[type="date"]
+ {
+    width: 100%; /* Match parent container width */
+    max-width: 800px;
+   
+}
+
+.form-field select{
+border: #6c4f2e 2px solid ;
+}
+
+/* Input and Dropdown Fields */
+input[type="number"],
+select {
+    width: 100%; /* Match the form's width */
+    padding: 10px;
+    border: 2px solid #6c4f2e;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  
+}
+
+/* Buttons */
+button {
+    width: 100%; /* Expand buttons to match form width */
+    max-width: 200px; /* Optional: Limit button width if needed */
+    margin-top: 10px; /* Add spacing between buttons */
+}
+
+/* Dropdown Menu Adjustments */
+.form-field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f9f9f9;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+}
+
+.h h1{
+    color: #6c4f2e;
+    font-weight: bolder;
+    
+}

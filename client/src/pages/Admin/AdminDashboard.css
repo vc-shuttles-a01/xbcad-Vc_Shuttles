@@ -1,0 +1,45 @@
+.admin-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF0CC;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .container {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #52391d;
+    height: 90%;
+  }
+  
+  
+  
+  .buttons-section {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    height: fit-content;
+  }
+  
+  .buttons-section button {
+    width: 240px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .buttons-section button:hover {
+    background-color: #52391d;
+    color: #fff;
+  }
+  

@@ -1,0 +1,79 @@
+/* AdminReports.css */
+
+.admin-reports-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #FFF0CC;
+  }
+  
+  .header {
+    width: 100%;
+ 
+    background-color: #52391d;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .header h1{
+    text-align: center;
+    padding-left: 90;
+  }
+  
+  .btn-sec button {
+    width: 80px;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-items: baseline;
+    text-align: center;
+    background-color: #FFF0CC;
+    color: #000;
+  
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .btn-sec button:hover{
+    background-color: #52391d;
+    color: #fff;
+  }
+  
+  .reports-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 15px;
+  }
+  
+  .report-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: rgb(234, 213, 167);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .report-item h3 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .report-item p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .chart-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+  }
+  
