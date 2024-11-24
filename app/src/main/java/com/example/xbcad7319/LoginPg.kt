@@ -17,6 +17,8 @@ class LoginPg : AppCompatActivity() {
     private lateinit var forgotPasswordTextView: TextView
     private lateinit var rememberMeCheckBox: LinearLayout
 
+    //kinda working code
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_pg)

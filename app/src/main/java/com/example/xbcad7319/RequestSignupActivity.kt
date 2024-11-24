@@ -81,9 +81,10 @@ class RequestSignupActivity : AppCompatActivity() {
             }
     }
 
-    // Notify all admin users about the signup request
     private fun notifyAdmins(requesterName: String, requesterEmail: String) {
         val db = FirebaseFirestore.getInstance()
+
+        Log.d("RequestSignupActivity", "Fetching admin emails from Firestore.")
 
         // Query Firestore for admin users
         db.collection("users")
@@ -93,6 +94,7 @@ class RequestSignupActivity : AppCompatActivity() {
                 val adminEmails = documents.mapNotNull { it.getString("email") }
 
                 if (adminEmails.isNotEmpty()) {
+                    Log.d("RequestSignupActivity", "Admin emails fetched: $adminEmails")
                     sendEmailToAdmins(adminEmails, requesterName, requesterEmail)
                 } else {
                     Log.d("RequestSignupActivity", "No admin emails found.")
@@ -102,6 +104,7 @@ class RequestSignupActivity : AppCompatActivity() {
                 Log.e("RequestSignupActivity", "Error fetching admin emails", e)
             }
     }
+
 
     private fun sendEmailToAdmins(adminEmails: List<String>, requesterName: String, requesterEmail: String) {
         val subject = "New Signup Request"
@@ -153,12 +156,44 @@ class RequestSignupActivity : AppCompatActivity() {
 
 
     private fun sendEmail(to: String, subject: String, message: String) {
-        // Replace this with your actual email-sending implementation
-        // Example: Using JavaMail API, SendGrid, or a similar library/API
-        Log.d("RequestSignupActivity", "Simulating email sending to: $to")
-        // Simulate success or failure
-        if (to.endsWith("example.com")) throw Exception("Simulated email failure")
+        // Email configuration
+        val smtpHost = "smtp.gmail.com" // Change based on your email provider
+        val smtpPort = "587" // Port for TLS
+        val senderEmail = "group7.vs.shuttles@gmail.com" // Your email address
+        val senderPassword = "Vc_shuttles@1925" // Your email password or app-specific password
+
+        val properties = System.getProperties()
+        properties["mail.smtp.host"] = smtpHost
+        properties["mail.smtp.port"] = smtpPort
+        properties["mail.smtp.auth"] = "true"
+        properties["mail.smtp.starttls.enable"] = "true" // Enable STARTTLS
+
+        try {
+            // Create session with authentication
+            val session = javax.mail.Session.getInstance(properties, object : javax.mail.Authenticator() {
+                override fun getPasswordAuthentication(): javax.mail.PasswordAuthentication {
+                    return javax.mail.PasswordAuthentication(senderEmail, senderPassword)
+                }
+            })
+
+            // Create email message
+            val mimeMessage = javax.mail.internet.MimeMessage(session)
+            mimeMessage.setFrom(javax.mail.internet.InternetAddress(senderEmail))
+            mimeMessage.addRecipient(javax.mail.Message.RecipientType.TO, javax.mail.internet.InternetAddress(to))
+            mimeMessage.subject = subject
+            mimeMessage.setText(message)
+
+            // Send email
+            javax.mail.Transport.send(mimeMessage)
+            Log.d("RequestSignupActivity", "Email sent successfully to: $to")
+        } catch (e: Exception) {
+            Log.e("RequestSignupActivity", "Failed to send email to: $to", e)
+            throw e // Re-throw the exception for the calling function to handle
+        }
     }
+
+    
+
 
 
 }

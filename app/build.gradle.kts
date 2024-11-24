@@ -34,12 +34,19 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    packaging {
+        resources {
+            excludes.add("META-INF/LICENSE.md")
+            excludes.add("META-INF/NOTICE.md")
+        }
     }
 }
 
@@ -94,6 +101,10 @@ dependencies {
     implementation (libs.mpandroidchart)
 
     implementation (libs.androidx.core.ktx.v160)
+
+    implementation (libs.android.mail)
+    implementation (libs.android.activation)
+
 
 
     //implementation (libs.play.services.basement)
