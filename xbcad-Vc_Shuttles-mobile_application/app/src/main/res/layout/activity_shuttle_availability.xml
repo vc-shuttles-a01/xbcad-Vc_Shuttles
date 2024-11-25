@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShuttleAvailabilityActivity">
+
+    <!-- Date Picker for selecting a specific day -->
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:calendarTextColor="@color/black"
+         />
+
+    <!-- RecyclerView to display available shuttle rides -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShuttleRides"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/datePicker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_shuttle_ride" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/logo_col"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/rvShuttleRides"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

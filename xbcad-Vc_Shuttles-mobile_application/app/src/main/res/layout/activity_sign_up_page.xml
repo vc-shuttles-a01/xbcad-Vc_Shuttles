@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpPage">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:id="@+id/rlf0g9ghgwfd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/rmao7mmgsnep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/rs0aqud9h2wh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="40dp"
+                        android:paddingBottom="1dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnBack"
+                            android:layout_width="39dp"
+                            android:layout_height="37dp"
+
+                            android:src="@drawable/back_btn"
+                            android:paddingHorizontal="13dp"
+                            android:layout_marginBottom="40dp"
+                            android:layout_marginHorizontal="19dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+                        </ImageButton>
+
+                        <TextView
+                            android:id="@+id/rl0gyl80xdy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="22dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Sign up"
+                            android:textColor="@color/black"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/rx39s2jf6onh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="22dp"
+                            android:layout_marginBottom="6dp"
+                            android:text="Email"
+                            android:textColor="#64676C"
+                            android:textSize="14sp" />
+                        <EditText
+                            android:id="@+id/txtEmailSign"
+                            android:inputType="text"
+                            android:hint="example@gmail.com"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_in_design"
+                            android:paddingVertical="22dp"
+                            android:paddingHorizontal="17dp"
+                            />
+                        <TextView
+                            android:id="@+id/r8wlu49be233"
+                            android:textColor="#64676C"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="7dp"
+                            android:layout_marginHorizontal="21dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Create a password"
+                            />
+                        <EditText
+                            android:id="@+id/txtPasswordSign"
+                            android:hint="Enter your Password"
+                            android:inputType="textPassword"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_in_design"
+                            android:paddingVertical="22dp"
+                            android:paddingHorizontal="17dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/r5ettfws8uwq"
+                            android:textColor="#64676C"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="7dp"
+                            android:layout_marginHorizontal="21dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Confirm password"
+                            />
+                        <EditText
+                            android:id="@+id/txtPasswordConfirmSign"
+                            android:hint="Enter your Password"
+                            android:inputType="textPassword"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="25dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_in_design"
+                            android:paddingVertical="22dp"
+                            android:paddingHorizontal="17dp"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/r8xd14nc6ku"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:orientation="horizontal">
+                            <ToggleButton
+                                android:id="@+id/r1i2fpfuyljg"
+                                android:layout_width="44dp"
+                                android:layout_height="23dp"
+                                android:text=""
+                                android:background="@drawable/cr17_5bffdddddd"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="14dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="vertical">
+                            </ToggleButton>
+                            <TextView
+                                android:id="@+id/rgenvtl9pcen"
+                                android:textColor="#1D737E"
+                                android:textSize="16sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:text="Daily reports"
+                                />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/r5abfy0ti57t"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="19dp"
+                            android:layout_marginHorizontal="77dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Get a daily avtivity report via email."
+                            />
+                        <LinearLayout
+                            android:id="@+id/rj20ju1mwc6p"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:orientation="horizontal">
+                            <ToggleButton
+                                android:id="@+id/r1i2fpfuyljgf"
+                                android:layout_width="44dp"
+                                android:layout_height="23dp"
+                                android:text=""
+                                android:background="@drawable/cr17_5bffdddddd"
+                                android:paddingHorizontal="3dp"
+                                android:layout_marginEnd="14dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="vertical">
+                            </ToggleButton>
+                            <TextView
+                                android:id="@+id/rm010hiil4bs"
+                                android:textColor="#1D737E"
+                                android:textSize="16sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:text="Weekly summary"
+                                />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/rkr834vz68"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="39dp"
+                            android:layout_marginHorizontal="71dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Get a weekly avtivity report via email."
+                            />
+
+                        <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/layout_signin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:background="@drawable/logo_col"
+                            android:paddingVertical="16dp"
+                            android:layout_marginBottom="42dp"
+                            android:layout_marginHorizontal="35dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/rfaymaec7gc"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Sign In"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:id="@+id/rlos8hk946n_rl"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="-13dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+
+                        >
+                        <ImageView
+                            android:id="@+id/rlos8hk946n"
+                            android:layout_width="match_parent"
+                            android:layout_height="132dp"
+                            android:src="@drawable/shuttle_logo"
+                            android:scaleType="fitXY"
+
+
+                            />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

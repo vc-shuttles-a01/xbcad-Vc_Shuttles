@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddAdminActivity">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:id="@+id/rchaospk9kvu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:elevation="8dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@drawable/logo_col"
+                >
+
+                <ImageView
+                    android:id="@+id/rb4w0yzz0t6"
+                    android:layout_width="250dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/shuttle_logo"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/rbvbgc5w13gk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFFFF"
+                android:paddingTop="27dp"
+                android:paddingBottom="13dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/adminEmailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email_to_make_admin"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/text_in_design"
+                    android:paddingVertical="18dp"
+                    android:paddingHorizontal="11dp"
+                    android:layout_marginBottom="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="240dp"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:layout_marginHorizontal="76dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/logo_col">
+
+
+
+                    <Button
+                        android:id="@+id/addAdminButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Make Admin"
+                        android:textColor="@color/black"
+                        android:background="@android:color/transparent"
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Input for Driver Email -->
+    <EditText
+        android:id="@+id/driverEmailEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Driver's Email"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/text_in_design"
+        android:paddingVertical="18dp"
+        android:paddingHorizontal="11dp"/>
+
+    <!-- Button to Assign Driver Role styled like the landing page buttons -->
+    <LinearLayout
+        android:id="@+id/btnLayout"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/logo_col"
+        app:layout_constraintTop_toBottomOf="@id/driverEmailEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/addDriverButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Create Driver"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <!-- TextView for Help Text -->
+    <TextView
+        android:id="@+id/txtHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Long Press to Delete"
+        app:layout_constraintTop_toBottomOf="@id/btnLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- ListView to Display Driver Emails -->
+    <ListView
+        android:id="@+id/driverEmailsListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txtHelp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

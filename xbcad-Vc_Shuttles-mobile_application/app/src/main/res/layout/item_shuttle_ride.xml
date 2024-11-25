@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time: 08:00 AM" />
+
+    <TextView
+        android:id="@+id/tvSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seats: 20" />
+
+    <TextView
+        android:id="@+id/tvDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Direction: Campus" />
+</LinearLayout>

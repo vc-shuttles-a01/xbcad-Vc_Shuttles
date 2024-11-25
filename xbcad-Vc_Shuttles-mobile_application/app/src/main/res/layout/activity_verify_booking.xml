@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerifyBookingActivity">
+
+    <!-- ScrollView for dynamic content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header with Logo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/logo_col"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/logoImageView"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/shuttle_logo"
+                    android:contentDescription="Logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verify Booking"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <!-- Section for Booking Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Booking Code:"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/bookingCodeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Booking Code"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Section for Results -->
+            <TextView
+                android:id="@+id/resultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:textColor="@android:color/holo_green_dark"
+                android:padding="12dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom fixed layout with Buttons -->
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/validateBookingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Validate"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/logo_color"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:backgroundTint="@color/logo_color"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
