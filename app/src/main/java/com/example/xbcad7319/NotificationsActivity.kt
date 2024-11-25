@@ -75,7 +75,6 @@ class NotificationsActivity : AppCompatActivity() {
     private fun fetchAndScheduleNotifications() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         Log.d("NotificationsActivity", "Fetching bookings for user ID: $userId")
-        //Toast.makeText(this, "Fetching bookings...", Toast.LENGTH_SHORT).show()
 
         FirebaseFirestore.getInstance().collection("schedules")
             .get()
@@ -96,43 +95,50 @@ class NotificationsActivity : AppCompatActivity() {
                         .addOnSuccessListener { bookingsSnapshot ->
                             if (bookingsSnapshot.isEmpty) {
                                 Log.d("NotificationsActivity", "No bookings found for schedule ID: $scheduleId")
-                                //Toast.makeText(this, "No bookings found for schedule: $scheduleId", Toast.LENGTH_SHORT).show()
                             } else {
                                 for (bookingDocument in bookingsSnapshot.documents) {
                                     val bookingTime = "$scheduleDate $scheduleTime"
-                                    val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-                                    val bookingDateTime = formatter.parse(bookingTime) ?: continue
-                                    val currentTime = Calendar.getInstance().time
 
-                                    val oneHourBefore = Calendar.getInstance().apply {
-                                        time = bookingDateTime
-                                        add(Calendar.HOUR, -1)
-                                    }.time
+                                    // Update: Correcting the SimpleDateFormat to match the date string format
+                                    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                                    try {
+                                        // Update: Adding try-catch block to handle parsing errors gracefully
+                                        val bookingDateTime = formatter.parse(bookingTime)
 
-                                    val thirtyMinutesBefore = Calendar.getInstance().apply {
-                                        time = bookingDateTime
-                                        add(Calendar.MINUTE, -30)
-                                    }.time
+                                        val currentTime = Calendar.getInstance().time
 
-                                    Log.d("NotificationsActivity", "Booking found: ${bookingDocument.id}")
-                                    //Toast.makeText(this, "Booking found for schedule: $scheduleId", Toast.LENGTH_SHORT).show()
+                                        val oneHourBefore = Calendar.getInstance().apply {
+                                            time = bookingDateTime
+                                            add(Calendar.HOUR, -1)
+                                        }.time
 
-                                    if (currentTime.before(oneHourBefore)) {
-                                        Log.d("NotificationsActivity", "Scheduling notification for 1 hour before booking.")
-                                        scheduleNotification(
-                                            "Booking Reminder",
-                                            "Your booking is in 1 hour.",
-                                            oneHourBefore.time
-                                        )
-                                    }
+                                        val thirtyMinutesBefore = Calendar.getInstance().apply {
+                                            time = bookingDateTime
+                                            add(Calendar.MINUTE, -30)
+                                        }.time
 
-                                    if (currentTime.before(thirtyMinutesBefore)) {
-                                        Log.d("NotificationsActivity", "Scheduling notification for 30 minutes before booking.")
-                                        scheduleNotification(
-                                            "Booking Reminder",
-                                            "Your booking is in 30 minutes.",
-                                            thirtyMinutesBefore.time
-                                        )
+                                        Log.d("NotificationsActivity", "Booking found: ${bookingDocument.id}")
+
+                                        if (currentTime.before(oneHourBefore)) {
+                                            Log.d("NotificationsActivity", "Scheduling notification for 1 hour before booking.")
+                                            scheduleNotification(
+                                                "Booking Reminder",
+                                                "Your booking is in 1 hour.",
+                                                oneHourBefore.time
+                                            )
+                                        }
+
+                                        if (currentTime.before(thirtyMinutesBefore)) {
+                                            Log.d("NotificationsActivity", "Scheduling notification for 30 minutes before booking.")
+                                            scheduleNotification(
+                                                "Booking Reminder",
+                                                "Your booking is in 30 minutes.",
+                                                thirtyMinutesBefore.time
+                                            )
+                                        }
+                                    } catch (e: java.text.ParseException) {
+                                        // Update: Log error and skip the invalid booking time
+                                        Log.e("NotificationsActivity", "Failed to parse booking time: $bookingTime", e)
                                     }
                                 }
                             }
@@ -148,6 +154,7 @@ class NotificationsActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error fetching schedules", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     private fun scheduleNotification(title: String, content: String, triggerTime: Long) {
         Log.d("NotificationsActivity", "Scheduling notification: $title - $content")
