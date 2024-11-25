@@ -44,7 +44,14 @@ class ProfileActivity : AppCompatActivity() {
         uploadProfileImageButton = findViewById(R.id.uploadProfileImageButton)
         upcomingBookingsListView = findViewById(R.id.upcomingBookingsListView)
 
-        adapter = BookingAdapter(this, upcomingBookingsList) { _, _ -> }
+        //adapter = BookingAdapter(this, upcomingBookingsList) { _, _ -> }
+
+        adapter = BookingAdapter(this, upcomingBookingsList) { booking, action ->
+            when (action) {
+                BookingAdapter.Action.COMPLETE -> completeBooking(booking)
+                BookingAdapter.Action.DELETE -> deleteBooking(booking)
+            }
+        }
         upcomingBookingsListView.adapter = adapter
 
         // Fetch user data
@@ -146,36 +153,90 @@ class ProfileActivity : AppCompatActivity() {
 
                 for (scheduleDocument in schedulesSnapshot.documents) {
                     val scheduleId = scheduleDocument.id
+                    val scheduleDate = scheduleDocument.getString("date")
+                    val scheduleTime = scheduleDocument.getString("time")
 
-                    db.collection("schedules")
-                        .document(scheduleId)
-                        .collection("bookings")
-                        .whereEqualTo("userId", userId)
-                        .get()
-                        .addOnSuccessListener { bookingsSnapshot ->
-                            if (!bookingsSnapshot.isEmpty) {
-                                for (bookingDocument in bookingsSnapshot.documents) {
-                                    val booking = Booking(
-                                        id = bookingDocument.id,
-                                        scheduleId = scheduleId,
-                                        date = scheduleDocument.getString("date") ?: "Unknown date",
-                                        time = scheduleDocument.getString("time") ?: "Unknown time",
-                                        seats = bookingDocument.getLong("seats")?.toString() ?: "N/A",
-                                        direction = scheduleDocument.getString("direction") ?: "No direction",
-                                        busNumber = scheduleDocument.getString("bus") ?: "No bus number"
-                                    )
-                                    upcomingBookingsList.add(booking)
+                    // Skip if date or time is missing
+                    if (scheduleDate.isNullOrEmpty() || scheduleTime.isNullOrEmpty()) continue
+
+                    val bookingDateTimeString = "$scheduleDate $scheduleTime"
+                    val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+
+                    try {
+                        val bookingDateTime = formatter.parse(bookingDateTimeString) ?: continue
+                        val currentTime = Calendar.getInstance().time
+
+                        // Only process upcoming bookings
+                        if (currentTime.before(bookingDateTime)) {
+                            db.collection("schedules")
+                                .document(scheduleId)
+                                .collection("bookings")
+                                .whereEqualTo("userId", userId)
+                                .get()
+                                .addOnSuccessListener { bookingsSnapshot ->
+                                    if (!bookingsSnapshot.isEmpty) {
+                                        for (bookingDocument in bookingsSnapshot.documents) {
+                                            val booking = Booking(
+                                                id = bookingDocument.id,
+                                                scheduleId = scheduleId,
+                                                date = scheduleDate,
+                                                time = scheduleTime,
+                                                seats = bookingDocument.getLong("seats")?.toString() ?: "N/A",
+                                                direction = scheduleDocument.getString("direction") ?: "No direction",
+                                                busNumber = scheduleDocument.getString("bus") ?: "No bus number"
+                                            )
+                                            upcomingBookingsList.add(booking)
+                                        }
+                                    }
+                                    adapter.notifyDataSetChanged()
                                 }
-                            }
-                            adapter.notifyDataSetChanged()
+                                .addOnFailureListener { e ->
+                                    Log.e("ProfileActivity", "Error fetching bookings for schedule ID $scheduleId", e)
+                                }
                         }
-                        .addOnFailureListener { e ->
-                            Log.e("ProfileActivity", "Error fetching bookings for schedule ID $scheduleId", e)
-                        }
+                    } catch (e: Exception) {
+                        Log.e("ProfileActivity", "Error parsing date/time for schedule ID $scheduleId", e)
+                    }
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("ProfileActivity", "Error fetching schedules", e)
             }
     }
+
+    private fun deleteBooking(booking: Booking) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val scheduleId = booking.scheduleId
+
+        if (scheduleId == null) {
+            Log.e("MyBookingsActivity", "Schedule ID is null for booking ID: ${booking.id}")
+            Toast.makeText(this, "Error: Cannot delete booking without a valid schedule ID", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        Log.d("MyBookingsActivity", "Deleting booking with ID: ${booking.id} for schedule ID: $scheduleId")
+
+        FirebaseFirestore.getInstance()
+            .collection("schedules")
+            .document(scheduleId)
+            .collection("bookings")
+            .document(booking.id)
+            .delete()
+            .addOnSuccessListener {
+                upcomingBookingsList.remove(booking)
+                adapter.notifyDataSetChanged()
+                Toast.makeText(this, "Booking deleted: Code: ${booking.id}", Toast.LENGTH_SHORT).show()
+                Log.d("MyBookingsActivity", "Successfully deleted booking with ID: ${booking.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.e("MyBookingsActivity", "Error deleting booking with ID: ${booking.id}", e)
+                Toast.makeText(this, "Error deleting booking: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun completeBooking(booking: Booking) {
+        Log.d("MyBookingsActivity", "Completing booking with ID: ${booking.id}")
+        Toast.makeText(this, "Booking completed: Code: ${booking.id}", Toast.LENGTH_SHORT).show()
+    }
+
 }

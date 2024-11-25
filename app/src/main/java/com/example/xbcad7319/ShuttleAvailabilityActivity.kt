@@ -1,7 +1,9 @@
 package com.example.xbcad7319
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,7 @@ import java.util.*
 
 class ShuttleAvailabilityActivity : AppCompatActivity() {
     private lateinit var rvShuttleRides: RecyclerView
+    private lateinit var backButton: Button
     private lateinit var adapter: ShuttleRidesAdapter
     private val db = FirebaseFirestore.getInstance()
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -34,6 +37,7 @@ class ShuttleAvailabilityActivity : AppCompatActivity() {
 
         // Initialize RecyclerView and adapter
         rvShuttleRides = findViewById(R.id.rvShuttleRides)
+        backButton = findViewById(R.id.backButton)
         adapter = ShuttleRidesAdapter()
         rvShuttleRides.layoutManager = LinearLayoutManager(this)
         rvShuttleRides.adapter = adapter
@@ -56,6 +60,12 @@ class ShuttleAvailabilityActivity : AppCompatActivity() {
         // Fetch initial data for today's date
         Log.d("ShuttleAvailability", "Fetching shuttle rides for today's date: $selectedDate")
         fetchShuttleRidesForDate(selectedDate)
+
+        backButton.setOnClickListener(){
+            val intent = Intent(this, LandingPage::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun fetchShuttleRidesForDate(date: String) {

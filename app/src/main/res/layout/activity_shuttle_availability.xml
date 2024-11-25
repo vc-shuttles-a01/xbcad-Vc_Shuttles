@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:calendarTextColor="@color/black"
          />
 
     <!-- RecyclerView to display available shuttle rides -->
@@ -29,5 +30,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_shuttle_ride" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/logo_col"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/rvShuttleRides"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.xbcad7319
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -28,6 +29,7 @@ import java.util.UUID
 class BookingActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var bookButton: Button
+    private lateinit var backButton: Button
     private lateinit var seatNumberEditText: EditText
     private lateinit var schedulesListView: ListView
     //private lateinit var schedulesAdapter: ArrayAdapter<String>
@@ -36,8 +38,6 @@ class BookingActivity : AppCompatActivity() {
     private val schedulesList = mutableListOf<DetailedSchedule>()
     private lateinit var detailedSchedulesAdapter: DetailedScheduleAdapter
 
-
-    //working code
 
     private var selectedScheduleId: String? = null
     private var currentSeatCount: Int = 0
@@ -49,6 +49,7 @@ class BookingActivity : AppCompatActivity() {
 
         firestore = FirebaseFirestore.getInstance()
         bookButton = findViewById(R.id.bookButton)
+        backButton = findViewById(R.id.backButton)
         seatNumberEditText = findViewById(R.id.seatNumberEditText)
         schedulesListView = findViewById(R.id.schedulesListView)
 
@@ -59,6 +60,12 @@ class BookingActivity : AppCompatActivity() {
         bookButton.setOnClickListener {
             bookShuttle()
         }
+
+        backButton.setOnClickListener(){
+            val intent = Intent(this, LandingPage::class.java)
+            startActivity(intent)
+        }
+
     }
 
    /* private fun setupSchedulesListView() {
