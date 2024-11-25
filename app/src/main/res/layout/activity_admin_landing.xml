@@ -67,11 +67,12 @@
 
 
 
+
                     <Button
-                        android:id="@+id/addAdminButton"
+                        android:id="@+id/manageScheduleButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Make Admin"
+                        android:text="Manage Bus Schedules"
                         android:textColor="@color/black"
                         android:background="@android:color/transparent"
                         />
@@ -91,16 +92,17 @@
                     android:orientation="horizontal"
                     android:background="@drawable/logo_col">
 
-
-
                     <Button
-                        android:id="@+id/manageScheduleButton"
+                        android:id="@+id/addAdminButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Manage Bus Schedules"
+                        android:text="Make Admin"
                         android:textColor="@color/black"
                         android:background="@android:color/transparent"
                         />
+
+
+
 
 
 

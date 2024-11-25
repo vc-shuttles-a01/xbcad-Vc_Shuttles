@@ -105,6 +105,7 @@ dependencies {
     implementation (libs.android.mail)
     implementation (libs.android.activation)
 
+    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
 
 
     //implementation (libs.play.services.basement)

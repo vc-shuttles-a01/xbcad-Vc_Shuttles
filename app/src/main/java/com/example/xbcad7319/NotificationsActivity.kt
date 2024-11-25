@@ -8,9 +8,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.CompoundButton
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.view.ViewCompat
@@ -23,6 +21,11 @@ import java.util.*
 class NotificationsActivity : AppCompatActivity() {
 
     private lateinit var notificationSwitch: Switch
+    private lateinit var backButton: Button
+    private lateinit var checkboxBookingUpdates: CheckBox
+    private lateinit var checkboxScheduleChanges: CheckBox
+    private lateinit var checkboxGeneralAnnouncements: CheckBox
+    private lateinit var savePreferencesButton: Button
     private var notificationsEnabled = false
     private val notificationChannelId = "booking_notifications_channel"
 
@@ -37,43 +40,67 @@ class NotificationsActivity : AppCompatActivity() {
         }
 
         notificationSwitch = findViewById(R.id.switch_notifications)
+        backButton = findViewById(R.id.backButton)
+        checkboxBookingUpdates = findViewById(R.id.checkbox_booking_updates)
+        checkboxScheduleChanges = findViewById(R.id.checkbox_schedule_changes)
+        checkboxGeneralAnnouncements = findViewById(R.id.checkbox_general_announcements)
+        savePreferencesButton = findViewById(R.id.savePreferencesButton)
+
+
 
         // Initialize notification channel
         createNotificationChannel()
 
-        // Load saved notification preference
+        // Load preferences
         val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
         notificationsEnabled = sharedPreferences.getBoolean("notifications_enabled", false)
         notificationSwitch.isChecked = notificationsEnabled
+        checkboxBookingUpdates.isChecked = sharedPreferences.getBoolean("booking_updates", true)
+        checkboxScheduleChanges.isChecked = sharedPreferences.getBoolean("schedule_changes", true)
+        checkboxGeneralAnnouncements.isChecked = sharedPreferences.getBoolean("general_announcements", true)
 
-        // Log the initial state
-        Log.d("NotificationsActivity", "Notifications enabled: $notificationsEnabled")
-
-        // Set up listener for the switch
-        notificationSwitch.setOnCheckedChangeListener { _: CompoundButton, isChecked: Boolean ->
+        // Set up switch listener
+        notificationSwitch.setOnCheckedChangeListener { _, isChecked ->
             notificationsEnabled = isChecked
             sharedPreferences.edit().putBoolean("notifications_enabled", notificationsEnabled).apply()
             if (notificationsEnabled) {
                 Toast.makeText(this, "Notifications Enabled", Toast.LENGTH_SHORT).show()
-                Log.d("NotificationsActivity", "Notifications enabled by user")
                 fetchAndScheduleNotifications()
             } else {
                 Toast.makeText(this, "Notifications Disabled", Toast.LENGTH_SHORT).show()
-                Log.d("NotificationsActivity", "Notifications disabled by user")
                 cancelAllNotifications()
             }
         }
 
+        // Save preferences button
+        savePreferencesButton.setOnClickListener {
+            savePreferences()
+        }
+
+        // Back button
+        backButton.setOnClickListener {
+            val intent = Intent(this, LandingPage::class.java)
+            startActivity(intent)
+        }
+
+        // Initial notification fetching if enabled
         if (notificationsEnabled) {
             fetchAndScheduleNotifications()
         }
     }
 
+    private fun savePreferences() {
+        val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+        sharedPreferences.edit().apply {
+            putBoolean("booking_updates", checkboxBookingUpdates.isChecked)
+            putBoolean("schedule_changes", checkboxScheduleChanges.isChecked)
+            putBoolean("general_announcements", checkboxGeneralAnnouncements.isChecked)
+        }.apply()
+        Toast.makeText(this, "Preferences Saved", Toast.LENGTH_SHORT).show()
+    }
+
     private fun fetchAndScheduleNotifications() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        Log.d("NotificationsActivity", "Fetching bookings for user ID: $userId")
-        Toast.makeText(this, "Fetching bookings...", Toast.LENGTH_SHORT).show()
-
         FirebaseFirestore.getInstance().collection("schedules")
             .get()
             .addOnSuccessListener { schedulesSnapshot ->
@@ -82,8 +109,6 @@ class NotificationsActivity : AppCompatActivity() {
                     val scheduleDate = scheduleDocument.getString("date") ?: continue
                     val scheduleTime = scheduleDocument.getString("time") ?: continue
 
-                    Log.d("NotificationsActivity", "Processing schedule ID: $scheduleId")
-
                     FirebaseFirestore.getInstance()
                         .collection("schedules")
                         .document(scheduleId)
@@ -91,65 +116,38 @@ class NotificationsActivity : AppCompatActivity() {
                         .whereEqualTo("userId", userId)
                         .get()
                         .addOnSuccessListener { bookingsSnapshot ->
-                            if (bookingsSnapshot.isEmpty) {
-                                Log.d("NotificationsActivity", "No bookings found for schedule ID: $scheduleId")
-                                Toast.makeText(this, "No bookings found for schedule: $scheduleId", Toast.LENGTH_SHORT).show()
-                            } else {
-                                for (bookingDocument in bookingsSnapshot.documents) {
-                                    val bookingTime = "$scheduleDate $scheduleTime"
-                                    val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-                                    val bookingDateTime = formatter.parse(bookingTime) ?: continue
-                                    val currentTime = Calendar.getInstance().time
+                            if (bookingsSnapshot.isEmpty) return@addOnSuccessListener
+                            for (bookingDocument in bookingsSnapshot.documents) {
+                                val bookingTime = "$scheduleDate $scheduleTime"
+                                val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+                                val bookingDateTime = formatter.parse(bookingTime) ?: continue
+                                val currentTime = Calendar.getInstance().time
 
-                                    val oneHourBefore = Calendar.getInstance().apply {
-                                        time = bookingDateTime
-                                        add(Calendar.HOUR, -1)
-                                    }.time
+                                val oneHourBefore = Calendar.getInstance().apply {
+                                    time = bookingDateTime
+                                    add(Calendar.HOUR, -1)
+                                }.time
 
-                                    val thirtyMinutesBefore = Calendar.getInstance().apply {
-                                        time = bookingDateTime
-                                        add(Calendar.MINUTE, -30)
-                                    }.time
+                                val thirtyMinutesBefore = Calendar.getInstance().apply {
+                                    time = bookingDateTime
+                                    add(Calendar.MINUTE, -30)
+                                }.time
 
-                                    Log.d("NotificationsActivity", "Booking found: ${bookingDocument.id}")
-                                    Toast.makeText(this, "Booking found for schedule: $scheduleId", Toast.LENGTH_SHORT).show()
+                                if (currentTime.before(oneHourBefore)) {
+                                    scheduleNotification("Booking Reminder", "Your booking is in 1 hour.", oneHourBefore.time)
+                                }
 
-                                    if (currentTime.before(oneHourBefore)) {
-                                        Log.d("NotificationsActivity", "Scheduling notification for 1 hour before booking.")
-                                        scheduleNotification(
-                                            "Booking Reminder",
-                                            "Your booking is in 1 hour.",
-                                            oneHourBefore.time
-                                        )
-                                    }
-
-                                    if (currentTime.before(thirtyMinutesBefore)) {
-                                        Log.d("NotificationsActivity", "Scheduling notification for 30 minutes before booking.")
-                                        scheduleNotification(
-                                            "Booking Reminder",
-                                            "Your booking is in 30 minutes.",
-                                            thirtyMinutesBefore.time
-                                        )
-                                    }
+                                if (currentTime.before(thirtyMinutesBefore)) {
+                                    scheduleNotification("Booking Reminder", "Your booking is in 30 minutes.", thirtyMinutesBefore.time)
                                 }
                             }
                         }
-                        .addOnFailureListener { e ->
-                            Log.e("NotificationsActivity", "Error fetching bookings for schedule $scheduleId", e)
-                            Toast.makeText(this, "Error fetching bookings for schedule: $scheduleId", Toast.LENGTH_SHORT).show()
-                        }
                 }
-            }
-            .addOnFailureListener { e ->
-                Log.e("NotificationsActivity", "Error fetching schedules", e)
-                Toast.makeText(this, "Error fetching schedules", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun scheduleNotification(title: String, content: String, triggerTime: Long) {
-        Log.d("NotificationsActivity", "Scheduling notification: $title - $content")
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         val intent = Intent(this, NotificationsActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             this,
@@ -157,7 +155,6 @@ class NotificationsActivity : AppCompatActivity() {
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-
         val notification = NotificationCompat.Builder(this, notificationChannelId)
             .setContentTitle(title)
             .setContentText(content)
@@ -174,17 +171,12 @@ class NotificationsActivity : AppCompatActivity() {
                     notificationManager.notify(System.currentTimeMillis().toInt(), notification)
                 }
             }, delay)
-            Toast.makeText(this, "Notification scheduled: $title", Toast.LENGTH_SHORT).show()
-        } else {
-            Log.d("NotificationsActivity", "Notification time already passed, not scheduling.")
         }
     }
 
     private fun cancelAllNotifications() {
-        Log.d("NotificationsActivity", "Canceling all notifications")
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancelAll()
-        Toast.makeText(this, "All notifications canceled", Toast.LENGTH_SHORT).show()
     }
 
     private fun createNotificationChannel() {
@@ -198,7 +190,6 @@ class NotificationsActivity : AppCompatActivity() {
             }
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
-            Log.d("NotificationsActivity", "Notification channel created.")
         }
     }
 }
